@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Product" representedClassName="Product" syncable="YES">
+        <attribute name="barcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plu" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="amount" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductAmount" inverseName="product" inverseEntity="ProductAmount" syncable="YES"/>
+    </entity>
+    <entity name="ProductAmount" representedClassName="ProductAmount" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="amount" inverseEntity="Product" syncable="YES"/>
+        <relationship name="purchase" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase" inverseName="amount" inverseEntity="Purchase" syncable="YES"/>
+    </entity>
+    <entity name="Purchase" representedClassName="Purchase" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="amount" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductAmount" inverseName="purchase" inverseEntity="ProductAmount" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Product" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="ProductAmount" positionX="-54" positionY="36" width="128" height="90"/>
+        <element name="Purchase" positionX="-36" positionY="63" width="128" height="90"/>
+    </elements>
+</model>
